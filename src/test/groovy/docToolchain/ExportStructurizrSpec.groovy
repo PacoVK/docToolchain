@@ -102,7 +102,7 @@ class ExportStructurizrSpec extends Specification {
 
         // C4-Plantuml do not have legend files
         and: 'the System Context diagram is a C4-PlantUML file'
-        def c4plantuml_pattern = ~/.*!include https:\/\/raw\.githubusercontent\.com\/plantuml-stdlib\/C4-PlantUML\/.*/
+        def c4plantuml_pattern = ~/.*!include <C4\/C4>*/
         new File(outputPath, "SystemContext-001.puml").grep(c4plantuml_pattern)
 
         and: 'the Container diagram is a C4-PlantUML file'

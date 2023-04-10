@@ -31,7 +31,7 @@ dependencies {
         exclude group: 'org.codehaus.groovy', module: 'groovy-xml'
     }
     testImplementation(
-            ('junit:junit:4.13.2'),
+            ('org.junit.jupiter:junit-jupiter-api:5.9.2:'),
             ('org.spockframework:spock-core:2.3-groovy-3.0'),
             //('org.slf4j:slf4j-api:1.7.13'),
             //('org.slf4j:slf4j-simple:1.7.13'),
@@ -178,7 +178,6 @@ task createDist(type: Zip, dependsOn: prepareDist) {
     include '**/*' //to include contents of a folder present inside Reports directory
     archiveFileName = 'docToolchain-'+dtc_version+'.zip'
     destinationDirectory = new File(buildDir, distFolder)
-    destinationDir(file(buildDir))
 }
 
 task downloadDependencies {
