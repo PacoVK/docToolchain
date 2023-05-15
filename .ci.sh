@@ -85,7 +85,7 @@ create_doc () {
   echo "#                                          #"
   echo "############################################"
   echo "TRAVIS_BRANCH=${BRANCH}"
-  if [ "${BRANCH}" == "ng" ] || [ "${BRANCH}" == "main-2.x" ] ; then
+  if [ "${BRANCH}" == "ng" ] ; then
     echo ">>> tasks"
     ./dtcw local tasks
     echo ">>> exportMarkdown"
@@ -113,7 +113,7 @@ publish_doc () {
   echo "${PULL_REQUEST} | ${JDK_VERSION} | ${BRANCH}"
   # Take from and modified http://sleepycoders.blogspot.de/2013/03/sharing-travis-ci-generated-files.html
   # ensure publishing doesn't run on pull requests, only when token is available and only on JDK11 matrix build and on master or a travisci test branch
-  if [ "${PULL_REQUEST}" == "false" ] && [ -n "${GH_TOKEN}" ] && { [ "${JDK_VERSION}" == "adopt-11" ] || [ "${JDK_VERSION}" == "openjdk11" ] || { [ "${JDK_VERSION}" == "11-adopt" ] && [ "${RUNNER_OS}" == "ubuntu-latest" ]; }; } && { [ "${BRANCH}" == "travisci" ] || [ "${BRANCH}" == "master" ] || [ "${BRANCH}" == "ng" ] || [ "${BRANCH}" == "main-1.x" ] || [ "${BRANCH}" == "main-2.x" ]; } ; then
+  if [ "${PULL_REQUEST}" == "false" ] && [ -n "${GH_TOKEN}" ] && { [ "${JDK_VERSION}" == "adopt-11" ] || [ "${JDK_VERSION}" == "openjdk11" ] || { [ "${JDK_VERSION}" == "11-adopt" ] && [ "${RUNNER_OS}" == "ubuntu-latest" ]; }; } && { [ "${BRANCH}" == "travisci" ] || [ "${BRANCH}" == "master" ] || [ "${BRANCH}" == "ng" ]; } ; then
     echo "############################################"
     echo "#                                          #"
     echo "#        Publish documentation             #"
@@ -129,17 +129,11 @@ publish_doc () {
     #using token clone gh-pages branch
     git clone --quiet --branch=gh-pages "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/${TRAVIS_REPO_SLUG}.git" gh-pages > /dev/null
 
-    if [ "${BRANCH}" == "master" ] || [ "${BRANCH}" == "main-1.x" ] ; then
+    if [ "${BRANCH}" == "ng" ] ; then
       #go into directory and copy data we're interested in to that directory
       cd gh-pages
-      rm -rf v1.3.x/*
-      cp -Rf "${BUILD_DIR}"/docs/* v1.3.x/.
-    fi
-    if [ "${BRANCH}" == "ng" ] || [ "${BRANCH}" == "main-2.x" ] ; then
-      #go into directory and copy data we're interested in to that directory
-      cd gh-pages
-      rm -rf v2.0.x/*
-      cp -Rf "${BUILD_DIR}"/build/microsite/output/* v2.0.x/.
+      rm -rf v3.0.x/*
+      cp -Rf "${BUILD_DIR}"/build/microsite/output/* v3.0.x/.
     fi
 
     #add, commit and push files

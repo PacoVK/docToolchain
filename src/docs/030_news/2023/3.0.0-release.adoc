@@ -1,0 +1,45 @@
+:filename: 030_news/2023/3.0.0-release.adoc
+:jbake-title: Release v3.0.0
+:jbake-date: 2023-05-XX
+:jbake-type: post
+:jbake-tags: docToolchain
+:jbake-status: published
+:jbake-menu: news
+:jbake-author: Ralf D. Müller
+:icons: font
+
+ifndef::imagesdir[:imagesdir: ../../../images]
+
+== docToolchain v3.0.0 has Been Released!
+
+=== About This Release
+
+Great News! docToolchain 3.0.0 is here!
+
+
+NOTE: a big "THANK YOU" to all *Sponsors* and *Contributors* who helped to support docToolchain!
+
+[TIP]
+====
+You like docToolchain?
+What about helping to make it even better?
+docToolchain is a community project, so be part of the community which drives the project.
+You don't have to code for doing so.
+It would even help to brush up the docs, write tutorials or groom the backlog
+(I guess many of the open issues are already fixed).
+====
+
+== 3.0.0 - 2023-05-XX
+
+=== fixes
+
+* **tbd**
+
+=== added
+
+* **tbd**
+
+=== changed
+
+* **tbd**
+
