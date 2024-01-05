@@ -16,6 +16,8 @@ dependencies {
     implementation((libs.jsoup))
     implementation((libs.poi.ooxml))
     implementation((libs.guava))
+    implementation((libs.asciidoctorj))
+    implementation((libs.asciidoctorj.pdf))
 
     testImplementation(libs.spock.reports) {
         exclude group: 'org.codehaus.groovy', module: 'groovy-xml'

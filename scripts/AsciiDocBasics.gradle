@@ -256,11 +256,18 @@ tasks.withType(AbstractAsciidoctorTask) { docTask ->
 }
 //end::AsciidoctorTask[]
 
+import org.docToolchain.tasks.GenerateHtmlTask
+
 //tag::generateHTML[]
 task generateHTML (
         type: AsciidoctorTask,
         group: 'docToolchain',
         description: 'use html5 as asciidoc backend') {
+
+    config.targetDir = targetDir
+    new GenerateHtmlTask(config).execute()
+
+/*
         attributes (
             'plantUMLDir'         : file("${docDir}/${config.outputPath}/html5").toURI().relativize(new File("${docDir}/${config.outputPath}/html5/plantUML/").toURI()).getPath(),
         )
@@ -311,6 +318,7 @@ task generateHTML (
             """)
         }
     }
+ */
 }
 //end::generateHTML[]
 
