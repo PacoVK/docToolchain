@@ -95,7 +95,8 @@ class ConfluenceClientV2 extends ConfluenceClient {
             if (results.empty || !hasNext) {
                 morePages = false
             } else {
-                cursor = response._links.next.split("cursor=")[1]
+                def nextUri = new URIBuilder(response._links.next)
+                cursor = nextUri.getQueryParams().find { it.name == 'cursor' }.value
             }
             results.inject(allPages) { Map acc, Map match ->
                 //unique page names in confluence, so we can get away with indexing by title
@@ -146,7 +147,8 @@ class ConfluenceClientV2 extends ConfluenceClient {
                     pageId = pageIds.remove(0)
                 }
             } else if (!results.empty && hasNext) {
-                cursor = response._links.next.split("cursor=")[1]
+                def nextUri = new URIBuilder(response._links.next)
+                cursor = nextUri.getQueryParams().find { it.name == 'cursor' }.value
             } else {
                 cursor = null
                 pageId = ids.remove(0)
