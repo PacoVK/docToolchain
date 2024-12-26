@@ -98,6 +98,7 @@ class ConfluenceClientV1 extends ConfluenceClient {
                 ]
                 acc
             }
+            println("${morePages ? "Fetched ${offset} pages, fetching next chunk..." : 'Fetched all pages:'}")
         }
         return allPages
     }
@@ -146,6 +147,7 @@ class ConfluenceClientV1 extends ConfluenceClient {
                 offset = 0
                 pageId = ids.remove(0)
             }
+            println("${morePages ? "Fetched ${offset} pages, fetching next chunk..." : 'Fetched all pages:'}")
         }
         return allPages
     }
