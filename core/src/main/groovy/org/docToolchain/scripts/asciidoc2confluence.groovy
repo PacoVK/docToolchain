@@ -196,6 +196,7 @@ def retrieveAllPages = { String spaceKey ->
         } else {
             allPages = confluenceClient.fetchPagesByAncestorId(pageIds, pageLimit)
         }
+        println("${allPages.size()} pages retrieved")
         allPages
     }
 }
@@ -569,7 +570,6 @@ def pushToConfluence = { pageTitle, pageBody, parentId, anchors, pageAnchors, ke
     // #938-mksiva: Changed the 3rd parameter from 'config.confluence.spaceKey' to 'confluenceSpaceKey' as it was always taking the default spaceKey
     // instead of the one passed in the input for each row.
     def pages = retrieveAllPages(confluenceSpaceKey)
-    println("pages retrieved")
     // println "Suche nach vorhandener Seite: " + pageTitle
     Map existingPage = pages[realTitleLC]
     def page
