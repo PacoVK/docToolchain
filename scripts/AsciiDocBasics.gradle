@@ -164,7 +164,7 @@ ext {
 }
 
 asciidoctorj {
-    version = '3.0.0'
+    version = '2.5.13'
     modules {
         diagram.use()
         diagram.version '2.3.1'
