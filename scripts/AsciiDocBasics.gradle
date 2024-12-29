@@ -504,6 +504,7 @@ task generateDeck (
         'idprefix': 'slide-',
         'idseparator': '-',
         'docinfo1': '',
+        'revealjsdir': '../reveal.js'
     )
 
     def sourceFilesREVEAL = findSourceFilesByType(['revealjs'])
